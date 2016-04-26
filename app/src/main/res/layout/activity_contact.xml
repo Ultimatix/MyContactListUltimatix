@@ -101,10 +101,12 @@
 			    android:id="@+id/imageContact"
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_marginRight="10sp" 
+                android:layout_marginRight="10sp"
 			    android:layout_alignTop="@+id/textContact"
-			    android:src="@drawable/photoicon" />
+			    android:src="@drawable/photoicon"
+                android:layout_alignParentEnd="true"
+                android:layout_above="@+id/editAddress"
+                android:longClickable="true" />
             
 
             <EditText
@@ -158,7 +160,8 @@ android:layout_toLeftOf="@+id/imageContact"
                 android:ems="8"
                 android:imeOptions="actionNext"
                 android:nextFocusDown="@+id/editState"
-                android:inputType="textCapWords">
+                android:inputType="textCapWords"
+               android:layout_alignEnd="@+id/textBirthday">
 
             </EditText>
             
@@ -184,14 +187,13 @@ android:layout_toLeftOf="@+id/imageContact"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="4"
-                android:maxLength="5"
+                android:maxLength="6"
                 android:imeOptions="actionNext"
                 android:nextFocusDown="@+id/editHome"
                 android:inputType="numberSigned"
                 android:background="@color/data_background"
                 android:layout_above="@+id/textHome"
-                android:layout_toRightOf="@+id/textCell"
-                android:layout_toEndOf="@+id/textCell">
+                android:layout_marginLeft="250dp">
 
             </EditText>
 
@@ -268,7 +270,8 @@ android:layout_toLeftOf="@+id/imageContact"
                 android:layout_below="@+id/textEMail"
                 android:ems="13"
                 android:inputType="textEmailAddress"
-               android:background="@color/data_background">
+               android:background="@color/data_background"
+               android:longClickable="true">
 
             </EditText>
             
