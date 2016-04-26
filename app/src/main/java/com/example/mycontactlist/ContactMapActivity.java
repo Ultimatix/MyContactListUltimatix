@@ -328,11 +328,16 @@ public class ContactMapActivity extends FragmentActivity {
     	            float azimut = (float) Math.toDegrees(orientation[0]);
     	            if (azimut < 0.0f) { azimut+=360.0f;}
     	            String direction;
-    	            if (azimut >= 315 || azimut < 45) { direction = "N"; }
-    	            else if (azimut >= 225 && azimut < 315) { direction = "W"; }
-    	            else if (azimut >= 135 && azimut < 225) { direction = "S"; }
-    	            else { direction = "E"; }
-    	            textDirection.setText(direction);	        
+					// bonus question Q8.4
+					if (azimut >= 337.5 || azimut < 22.5) { direction = "N"; }
+					else if (azimut >= 22.5 && azimut < 67.5) { direction = "NE"; }
+					else if (azimut >= 67.5 && azimut < 112.5) { direction = "E"; }
+					else if (azimut >= 112.5 && azimut < 157.5) { direction = "SE"; }
+					else if (azimut >= 157.5 && azimut < 202.5) { direction = "S"; }
+					else if (azimut >= 202.5 && azimut < 247.5) { direction = "SW"; }
+					else if (azimut >= 247.5 && azimut < 292.5) { direction = "W"; }
+					else { direction = "NW"; }
+    	            textDirection.setText(direction);
     	        }
     	       }
     	    }

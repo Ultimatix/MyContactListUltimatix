@@ -63,6 +63,8 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		// Q8.2
 		initMsgFunction();
 		initImageButton();
+		// bonus for getting a++
+		initEmailFunction();
 
 		Bundle extras = getIntent().getExtras();
 		if (extras != null) {
@@ -469,6 +471,31 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		});
 	}
 
+	// ultimatix bonus question for a++. This will send a mail to the contact on long press
+	private void initEmailFunction() {
+		System.out.println("EMAIL CALLED");
+		EditText editCell = (EditText) findViewById(R.id.editEMail);
+		editCell.setOnLongClickListener(new OnLongClickListener() {
+
+			@Override
+			public boolean onLongClick(View arg0) {
+				System.out.println("LONG PRESS EMAIL");
+				emailContact(currentContact.getEMail());
+				return false;
+			}
+		});
+	}
+
+	private void emailContact(String email) {
+
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setData(Uri.parse("mailto:" + email));
+		intent.setType("text/plain");
+		intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Hey "+ currentContact.getContactName());
+		intent.putExtra(android.content.Intent.EXTRA_TEXT, "Dear "+ currentContact.getContactName() + "How are You. Long time no See. Have a good day");
+		startActivity(Intent.createChooser(intent, "Send via..."));
+	}
+
 	// Q8.2
 	private void msgContact(String phoneNumber) {
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
@@ -531,7 +558,7 @@ public class ContactActivity extends FragmentActivity implements SaveDateListene
 		if (requestCode == CAMERA_REQUEST) {
 			if (resultCode == RESULT_OK) {
 				Bitmap photo = (Bitmap) data.getExtras().get("data");
-				Bitmap scaledPhoto = Bitmap.createScaledBitmap(photo, 72, 72, true);
+				Bitmap scaledPhoto = Bitmap.createScaledBitmap(photo, 100, 200, true);
 				ImageButton imageContact = (ImageButton) findViewById(R.id.imageContact);
 				imageContact.setImageBitmap(scaledPhoto);
 				currentContact.setPicture(scaledPhoto);
